@@ -1,12 +1,15 @@
 // import header from '../components/header';
 // import footer from '../components/footer';
-import Botpage from '../components/botpage';
+import ChatBot from '../components/botpage';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 
-export default function bot() {
+export default function Bot() {
   return (
     <>
-      <Botpage />
+    <ProtectedRoute>
+      <ChatBot />
+      </ProtectedRoute>
     </>
   )
 }

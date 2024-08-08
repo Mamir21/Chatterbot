@@ -6,3 +6,4 @@ react-dom
 @emotion/styled
 @mui/material
 react-firebase-hooks
+axios
