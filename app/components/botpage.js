@@ -32,10 +32,8 @@ export default function ChatBot() {
   return (
     <div className="chat-container">
       <div className="chat-box">
-        <div className="chat-title">
-          ChatterBot
-        </div>
-        <p className="chat-description">  </p>
+        <div className="chat-title"> Chatter Bot </div>
+        <p className="chat-description"> Ask Any Question & Chatter Bot Will Respond </p>
 
         <div className="chat-history">
           {chatHistory.map((message, index) => (
