@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { Home } from './home/page';
+import { Home } from './Home/page';
  
 export default function Page() {
   const [user, loading] = useAuthState(auth);
@@ -12,7 +12,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/home'); 
+      router.push('/Home'); 
     }
   }, [user, loading, router]);
 
