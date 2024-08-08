@@ -1,11 +1,11 @@
-import Header from './components/header';
-import Footer from './components/footer';
-import Aboutpage from './pages/aboutpage';
+// import Header from '../components/header';
+// import Footer from '../components/footer';
+// import Aboutpage from '../components/aboutpage';
 
-export default function About() {
+export default function about() {
   return (
     <div>
-      <h1>About</h1>
+      <h1>ABOUT</h1>
     </div>
   )
 }
