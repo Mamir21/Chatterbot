@@ -12,7 +12,7 @@ export default function Page() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/home'); 
+      router.push('/login'); 
     }
   }, [user, loading, router]);
 
@@ -27,7 +27,7 @@ export default function Page() {
       <ProtectedRoute>
      {/* Include all the routes that will be protected inside of the ProtectedRoute */}
      {/*/chatbot*/}
-      {/*Anyfeature that doesn't require the user to SignIn */}
+      {/*Any feature that doesn't require the user to SignIn */}
       </ProtectedRoute>
   );
 }

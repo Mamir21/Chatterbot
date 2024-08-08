@@ -1,1 +1,0 @@
-{/* What users see when they first visit out chatterbot site, and they will be redirected to if not logged in */}
