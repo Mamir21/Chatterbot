@@ -12,7 +12,7 @@ export default function Login() {
 
   useEffect(() => {
     if (!loading && user) {
-      router.push('/home');  
+      router.push('/home');
     }
   }, [user, loading, router]);
 
@@ -21,7 +21,7 @@ export default function Login() {
   }
 
   if (user) {
-    return null;  
+    return null;
   }
 
   const handleGoogleSignIn = async () => {
