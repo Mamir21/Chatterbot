@@ -27,7 +27,7 @@ export default function Page() {
       <ProtectedRoute>
      {/* Include all the routes that will be protected inside of the ProtectedRoute */}
      {/*/chatbot*/}
-      {/*Any other feature that doesn't require the user to SignIn */}
+      {/*Anyfeature that doesn't require the user to SignIn */}
       </ProtectedRoute>
   );
 }
