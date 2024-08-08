@@ -3,7 +3,7 @@
 import Botpage from '../components/botpage';
 
 
-export default function chatbot() {
+export default function bot() {
   return (
     <>
       <Botpage />
