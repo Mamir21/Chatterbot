@@ -1,20 +1,10 @@
 'use client';
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signInWithGoogle } from '../utils/auth';
 import { Button } from '@mui/material';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/firebase';
 
 export default function SignInButton() {
   const router = useRouter();
-  const [user, loading] = useAuthState(auth);
-
-  useEffect(() => {
-    if (!loading && user) {
-      router.push('/home');
-    }
-  }, [user, loading, router]);
 
   const handleGoogleSignIn = async () => {
     try {
