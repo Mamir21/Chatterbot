@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Home } from './home/page';
+import { Login } from './login/page.js';
  
 export default function Page() {
   const [user, loading] = useAuthState(auth);
