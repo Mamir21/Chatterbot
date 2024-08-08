@@ -21,10 +21,11 @@ export default function Page() {
   }
 
   if (!user) {
-    return <Home />; 
+    return <Login />; 
   }
   return (
       <ProtectedRoute>
+        <Home/>
      {/* Include all the routes that will be protected inside of the ProtectedRoute */}
      {/*/chatbot*/}
       {/*Any feature that doesn't require the user to SignIn */}
