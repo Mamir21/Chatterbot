@@ -12,7 +12,7 @@ export default function SignInButton() {
 
   useEffect(() => {
     if (!loading && user) {
-      router.push('/Bot');
+      router.push('/bot');
     }
   }, [user, loading, router]);
 
@@ -21,7 +21,7 @@ export default function SignInButton() {
       const user = await signInWithGoogle();
       if (user) {
         alert('Signed in successfully');
-        router.push('/Bot');
+        router.push('/bot');
       }
     } catch (error) {
       alert('Error signing in with Google: ' + error.message);

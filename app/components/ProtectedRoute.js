@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') { 
       if (!loading && !user) {
-        router.push('/Home'); 
+        router.push('/home'); 
       }
     }
   }, [user, loading, router]);
