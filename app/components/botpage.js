@@ -15,20 +15,34 @@ export default function ChatBot() {
       { role: 'user', content: userInput },
     ]);
 
-    const chatCompletion = await openai.chat.completions.create({
-      messages: [...chatHistory, { role: 'assistant', content: userInput }],
-      model: 'gpt-3.5-turbo',
-    });
+    try {
+      const response = await fetch('/api/bot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: userInput }),
+      });
 
-    setChatHistory((prevChat) => [
-      ...prevChat,
-      { role: 'assistant', content: chatCompletion.choices[0].message.content },
-    ])
+      const data = await response.json();
 
-    setUserInput('');
-    setIsLoading(false);
-  }
+      const assistantMessage = data.choices[0].message.content;
 
+      setChatHistory((prevChat) => [
+        ...prevChat,
+        { role: 'assistant', content: assistantMessage },
+      ]);
+    } catch (error) {
+      console.error('Error querying LLaMA API:', error);
+      setChatHistory((prevChat) => [
+        ...prevChat,
+        { role: 'assistant', content: 'Error querying LLaMA API' },
+      ]);
+    } finally {
+      setUserInput('');
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="chat-container">
       <div className="chat-box">
