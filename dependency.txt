@@ -1,0 +1,8 @@
+firebase
+next
+react
+react-dom
+@emotion/react
+@emotion/styled
+@mui/material
+react-firebase-hooks
