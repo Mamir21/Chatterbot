@@ -1,23 +1,56 @@
-'use client'
-// import Header from '../components/header';
-// import Footer from '../components/footer';
-// import Home from '../components/homepage';
-import { Box, TextField, Button } from "@mui/material";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import {auth} from '../../firebase.js'
+'use client';
+import { useRouter } from 'next/navigation';
+import { signInWithGoogle } from '../services/auth';
+import { Button, Box } from '@mui/material';
+import { auth } from '@/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect } from 'react';
 
 export default function Login() {
-    const handleGoogle = async (e) => {
-        const provider = new GoogleAuthProvider();
-        return signInWithPopup(auth, provider);
-    }
+  const router = useRouter();
+  const [user, loading] = useAuthState(auth);
 
-    return (
-        <div>
-            <Button onClick={handleGoogle}>
-                Sign In with Google
-            </Button>
-        </div>
-    )
+  useEffect(() => {
+    if (!loading && user) {
+      router.push('/home');
+    }
+  }, [user, loading, router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
+
+  if (user) {
+    return null;
+  }
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const user = await signInWithGoogle();
+      if (user) {
+        alert('Signed in successfully');
+        router.push('/home');
+      }
+    } catch (error) {
+      alert('Error signing in with Google: ' + error.message);
+    }
+  };
+
+  return (
+    <Box
+    display={'flex'}
+    justifyContent={'center'}
+    alignItems={'center'}
+    >
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleGoogleSignIn}
+        style={{ backgroundColor: '#33292900', color: '#674B4B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <img src="/images/google-logo.png" alt="Google Logo" style={{ width: '20px', marginRight: '8px', borderRadius: '35%' }} />
+        Sign In with Google
+      </Button>
+    </Box>
+  );
+}

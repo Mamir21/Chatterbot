@@ -10,24 +10,51 @@ export default function ChatBot() {
   const handleUserInput = async () => {
     setIsLoading(true);
 
-    setChatHistory((prevChat) => [
-      ...prevChat,
-      { role: 'user', content: userInput },
-    ]);
+    const initialSystemMessage = {
+      role: 'system',
+      content: 'You are a helpful assistant.',
+    };
 
-    const chatCompletion = await openai.chat.completions.create({
-      messages: [...chatHistory, { role: 'assistant', content: userInput }],
-      model: 'gpt-3.5-turbo',
-    });
+    const updatedChatHistory = chatHistory.length === 0
+      ? [initialSystemMessage, ...chatHistory, { role: 'user', content: userInput }]
+      : [...chatHistory, { role: 'user', content: userInput }];
 
-    setChatHistory((prevChat) => [
-      ...prevChat,
-      { role: 'assistant', content: chatCompletion.choices[0].message.content },
-    ])
+    setChatHistory(updatedChatHistory);
 
-    setUserInput('');
-    setIsLoading(false);
-  }
+    try {
+      const response = await fetch('/api/bot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ messages: updatedChatHistory }),  
+      });
+
+      const data = await response.json();
+
+      if (data.choices && data.choices[0] && data.choices[0].message) {
+        setChatHistory((prevChat) => [
+          ...prevChat,
+          { role: 'assistant', content: data.choices[0].message.content },
+        ]);
+      } else {
+        console.error('Unexpected API response structure:', data);
+        setChatHistory((prevChat) => [
+          ...prevChat,
+          { role: 'assistant', content: 'Error: Unexpected response from the API' },
+        ]);
+      }
+    } catch (error) {
+      console.error('Error querying LLaMA API:', error);
+      setChatHistory((prevChat) => [
+        ...prevChat,
+        { role: 'assistant', content: 'Error querying LLaMA API' },
+      ]);
+    } finally {
+      setUserInput('');
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="chat-container">
