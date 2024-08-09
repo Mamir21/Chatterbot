@@ -139,3 +139,31 @@ body {
   50% { opacity: 0.5; }
   100% { opacity: 1; }
 }
+.homepage-container {
+  height: 100vh;
+  background-image: url('../public/images/home.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.overlay h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.overlay p {
+  font-size: 1.5em;
+  margin-top: 10px;
+}
