@@ -4,52 +4,14 @@
   margin: 0;
 }
 
-body {
-  margin: 0;
-  font-family: poppins;
-  background-color: #1a202c;
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-}
-
-.homepage-container {
-  height: 100vh;
-  background-image: url('../public/images/home.jpeg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  padding: 10px 10%;
-  position: static;
-}
-
 .btn {
-  display: inline;
+  display: inline-block;
   text-decoration: none;
-  padding: 14px 40px;
+  padding: 14px 45px;
   color: #fff;
-  background-image: linear-gradient(45deg, #4299e1, #38b2ac);
-  font-size: 14px;
+  background-image: linear-gradient(45deg, #4b5cf3, #1a1dd3);
+  font-size: 18px;
   border-radius: 30px;
-}
-
-.content {
-  font-family: poppins;
-  margin-top: 20%;
-  max-width: 600px;
-}
-
-.content h1 {
-  font-size: 70px;
-  color: #222;
-}
-
-.content p {
-  margin: 10px 0 30px;
-  color: #333;
-}
-
-.content.btn {
-  padding: 15px 80px;
-  font-size: 15px;
+  border-top-right-radius: 0;
+  transition: 0.7s;
 }
