@@ -8,7 +8,7 @@ export default function Navbar() {
         <img src='/images/logo.png' className="logo" />
         <ul>
             <li><NavLink href="/home" title="Home" /></li>
-            <li><NavLink href="/bot" title="ChatterBot" /></li>
+            <li><NavLink href="/bot" title="Chatterbot" /></li>
             <li><NavLink href="/about" title="About" /></li>
         </ul>
         <div>
