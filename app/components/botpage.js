@@ -10,10 +10,16 @@ export default function ChatBot() {
   const handleUserInput = async () => {
     setIsLoading(true);
 
-    setChatHistory((prevChat) => [
-      ...prevChat,
-      { role: 'user', content: userInput },
-    ]);
+    const initialSystemMessage = {
+      role: 'system',
+      content: 'You are a helpful assistant.',
+    };
+
+    const updatedChatHistory = chatHistory.length === 0
+      ? [initialSystemMessage, ...chatHistory, { role: 'user', content: userInput }]
+      : [...chatHistory, { role: 'user', content: userInput }];
+
+    setChatHistory(updatedChatHistory);
 
     try {
       const response = await fetch('/api/bot', {
@@ -21,17 +27,23 @@ export default function ChatBot() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query: userInput }),
+        body: JSON.stringify({ messages: updatedChatHistory }),  
       });
 
       const data = await response.json();
 
-      const assistantMessage = data.choices[0].message.content;
-
-      setChatHistory((prevChat) => [
-        ...prevChat,
-        { role: 'assistant', content: assistantMessage },
-      ]);
+      if (data.choices && data.choices[0] && data.choices[0].message) {
+        setChatHistory((prevChat) => [
+          ...prevChat,
+          { role: 'assistant', content: data.choices[0].message.content },
+        ]);
+      } else {
+        console.error('Unexpected API response structure:', data);
+        setChatHistory((prevChat) => [
+          ...prevChat,
+          { role: 'assistant', content: 'Error: Unexpected response from the API' },
+        ]);
+      }
     } catch (error) {
       console.error('Error querying LLaMA API:', error);
       setChatHistory((prevChat) => [
@@ -43,6 +55,7 @@ export default function ChatBot() {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="chat-container">
       <div className="chat-box">
