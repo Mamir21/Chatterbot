@@ -1,17 +1,18 @@
 import React from 'react';
+import NavLink from './NavLink';
 import '../navbar.css';
 
 export default function Navbar() {
   return (
     <nav>
-        <img src='../images/logo.png' className="logo" />
+        <img src='/images/logo.png' className="logo" />
         <ul>
-            <li><a href="home">Home</a></li>
-            <li href="bot">ChatterBot</li>
-            <li href="about">About</li>
+            <li><NavLink href="/home" title="Home" /></li>
+            <li><NavLink href="/bot" title="ChatterBot" /></li>
+            <li><NavLink href="/about" title="About" /></li>
         </ul>
         <div>
-            <a href='*' className='btn'>Log out</a>
+            <a href='/' className='btn'>Log out</a>
         </div>
     </nav>
   )
