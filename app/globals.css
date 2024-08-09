@@ -4,9 +4,10 @@
   margin: 0;
 }
 
+/* ChatBot Page */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: poppins;
   background-color: #1a202c;
   background-size: cover;
   background-position: left;
@@ -139,31 +140,82 @@ body {
   50% { opacity: 0.5; }
   100% { opacity: 1; }
 }
+
+/* Home Page */
 .homepage-container {
   height: 100vh;
   background-image: url('../public/images/home.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
+  padding: 10px 10%;
+  position: static;
+}
+
+.btn {
+  display: inline;
+  text-decoration: none;
+  padding: 14px 40px;
+  color: #fff;
+  background-image: linear-gradient(45deg, #4299e1, #38b2ac);
+  font-size: 14px;
+  border-radius: 30px;
+}
+
+.content {
+  font-family: poppins;
+  margin-top: 20%;
+  max-width: 600px;
+}
+
+.content h1 {
+  font-size: 70px;
+  color: #222;
+}
+
+.content p {
+  margin: 10px 0 30px;
+  color: #333;
+}
+
+.content.btn {
+  padding: 15px 80px;
+  font-size: 15px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  background-color: transparent;
   color: white;
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.overlay h1 {
-  font-size: 3em;
-  margin: 0;
+nav {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.overlay p {
-  font-size: 1.5em;
-  margin-top: 10px;
-}
+.logo {
+  width: 140px;
+ }
+
+ nav ul {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 15px;
+ }
+
+ nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 300;
+ }
