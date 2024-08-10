@@ -77,5 +77,5 @@ export default function Footer() {
         <p>&copy; 2024 Chatterbot</p>
       </div>
     </footer>
-  );
+  )
 }

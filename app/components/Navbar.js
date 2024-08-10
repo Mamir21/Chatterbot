@@ -16,7 +16,7 @@ export default function Navbar() {
     } catch (error) {
       console.error('Error logging out:', error);
     }
-  };
+  }
 
   return (
     <nav>
@@ -29,5 +29,5 @@ export default function Navbar() {
         <button className='btn' onClick={handleLogout}>Log out</button>
       </div>
     </nav>
-  );
+  )
 }

@@ -83,7 +83,7 @@ export default function ChatBot() {
               {message.role === 'user' ? (
                   <img alt="avatar" width={40} height={40} src="../images/gojo1.gif" />
                 ) : (
-                  <img alt="avatar" width={40} height={40} src="../images/gojo1.gif" />
+                  <img alt="avatar" width={40} height={40} src="../images/ai.png" />
                 )}
               </div>
               <div className={`message-content ${message.role}`} style={{ width: '100%', marginLeft: '16px' }}>

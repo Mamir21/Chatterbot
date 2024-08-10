@@ -11,7 +11,7 @@ export const signInWithGoogle = async () => {
         console.error('Error signing in with Goggle', error);
         throw error;
     }
-};
+}
 
 export const logOut = async () => {
     try {
@@ -20,4 +20,4 @@ export const logOut = async () => {
         console.error('Error logging out', error);
         throw error;
     }
-};
+}

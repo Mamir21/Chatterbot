@@ -19,7 +19,7 @@ export const queryLLaMA = async (messages) => {
           'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`,
         },
       }
-    );
+    )
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -34,4 +34,4 @@ export const queryLLaMA = async (messages) => {
     console.error('Error config:', error.config);
     throw new Error('Error querying LLaMA API');
   }
-};
+}

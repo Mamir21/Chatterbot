@@ -1,4 +1,5 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 import { signInWithGoogle } from '../services/auth';
 import { Button, Box, Typography } from '@mui/material';
@@ -149,7 +150,5 @@ export default function Login() {
       </Box>
     </Box>
     </div>
-  );
+  )
 }
-
-

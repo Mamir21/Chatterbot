@@ -1,18 +1,18 @@
-import Footer from '../components/footer';
+import ProtectedRoute from "../components/ProtectedRoute";
 import Navbar from '../components/Navbar';
+import Footer from '../components/footer';
 import Homepage from '../components/homepage';
-import ProtectedRoute from "../components/ProtectedRoute"
 
 export default function Home() {
-    return (
-     <ProtectedRoute>
-    <>
+  return (
+    <ProtectedRoute>
+
       <Navbar />
       <>
       <Homepage />
       </>
       <Footer />
-    </>
+
     </ProtectedRoute>
-    )
+  )
 }

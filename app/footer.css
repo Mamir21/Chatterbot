@@ -27,11 +27,11 @@ footer {
   
   .team-member img.profile-pic {
     border-radius: 75%;
-    width: 170px; /* Adjust as needed */
-    height: 175px; /* Adjust as needed */
+    width: 170px;
+    height: 175px;
     margin-bottom: 0px;
-    object-fit: cover; /* Ensures the image covers the area, cropping overflow */
-    border: 5px solid white; /* Adding a white border */
+    object-fit: cover;
+    border: 5px solid white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
