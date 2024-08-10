@@ -153,13 +153,3 @@ export default function Login() {
 }
 
 
-
-// sign out function to be placed before return
-//     const out = async (e) => {
-//         return auth.signOut();
-//     }
-//
-//  Sign Out Button to go in return 
-// <Button onClick={out}>
-//     Sign Out
-// </Button>
