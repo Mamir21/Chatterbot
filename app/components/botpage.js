@@ -1,25 +1,30 @@
 'use client';
 
-import { useState } from 'react';
-import '../bot.css'
+import { useState, useEffect } from 'react';
+import '../bot.css';
 
 export default function ChatBot() {
   const [userInput, setUserInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleUserInput = async () => {
-    setIsLoading(true);
-
+  useEffect(() => {
     const initialSystemMessage = {
       role: 'system',
-      content: 'You are a helpful assistant.',
-    };
+      content: "Hello! I’m your friendly robot assistant, ready to help with questions. Whether you need info, advice, or just a chat," +
+      " I’m here for you. Ask me anything, and let’s make your experience great!"
+    }
+    
+    setChatHistory([initialSystemMessage]);
+  }, [])
 
-    const updatedChatHistory = chatHistory.length === 0
-      ? [initialSystemMessage, ...chatHistory, { role: 'user', content: userInput }]
-      : [...chatHistory, { role: 'user', content: userInput }];
+  const handleUserInput = async () => {
+    if (userInput.trim() === '') return;
 
+    setIsLoading(true);
+
+    let updatedChatHistory = [...chatHistory, { role: 'user', content: userInput }];
+    
     setChatHistory(updatedChatHistory);
 
     try {
@@ -29,7 +34,7 @@ export default function ChatBot() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ messages: updatedChatHistory }),  
-      });
+      })
 
       const data = await response.json();
 
@@ -37,59 +42,72 @@ export default function ChatBot() {
         setChatHistory((prevChat) => [
           ...prevChat,
           { role: 'assistant', content: data.choices[0].message.content },
-        ]);
+        ])
       } else {
         console.error('Unexpected API response structure:', data);
         setChatHistory((prevChat) => [
           ...prevChat,
           { role: 'assistant', content: 'Error: Unexpected response from the API' },
-        ]);
+        ])
       }
     } catch (error) {
       console.error('Error querying LLaMA API:', error);
       setChatHistory((prevChat) => [
         ...prevChat,
         { role: 'assistant', content: 'Error querying LLaMA API' },
-      ]);
+      ])
     } finally {
       setUserInput('');
       setIsLoading(false);
     }
-  };
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleUserInput();
+    }
+  }
 
   return (
     <div className="chat-container">
-      <div className="chat-box">
-        <div className="chat-title"> Chatter Bot </div>
-        <p className="chat-description"> Ask Any Question & Chatter Bot Will Respond </p>
-
-        <div className="chat-history">
+      <div className="chat">
+        <div className="response chat-history">
           {chatHistory.map((message, index) => (
             <div
               key={index}
-              className={`chat-message ${message.role}`}
+              className={`chat-message chat-line ${message.role === 'user' ? 'user-chat' : 'ai-chat'}`}
             >
-              <div className={`message-sender ${message.role}`}>
-                {message.role === 'user' ? 'User' : 'ChatterBot'}
+              <div className={`message-sender avatar ${message.role}`}>
+              {message.role === 'user' ? (
+                  <img alt="avatar" width={40} height={40} src="../images/user1.jpg" />
+                ) : (
+                  <img alt="avatar" width={40} height={40} src="../images/ai.png" />
+                )}
               </div>
-              <div className={`message-content ${message.role}`}>
+              <div className={`message-content ${message.role}`} style={{ width: '100%', marginLeft: '16px' }}>
                 {message.content}
               </div>
+              {index < chatHistory.length - 1 && (
+                <div className="horizontal-line" />
+              )}
             </div>
           ))}
         </div>
 
-        <div className="input-area">
+        <div className="chat-form">
           <input
             type="text"
-            placeholder="Ask me anything"
+            placeholder="Message Chatterbot"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="input-field"
           />
           {isLoading ? (
-            <div className="loading">Loading..</div>
+            <div className="loading"></div>
           ) : (
-            <button onClick={handleUserInput}>Ask</button>
+            <button className="send-button" onClick={handleUserInput} disabled={isLoading}></button>
           )}
         </div>
       </div>
