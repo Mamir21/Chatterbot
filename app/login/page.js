@@ -5,7 +5,6 @@ import { Button, Box, Typography } from '@mui/material';
 import { auth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
-import cover from "../../public/images/gradient-connection-background.jpg"
 
 export default function Login() {
   const router = useRouter();
@@ -35,19 +34,10 @@ export default function Login() {
     } catch (error) {
       alert('Error signing in with Google: ' + error.message);
     }
-  };
+  }
 
   return (
-    <Box width="100vw" 
-    height="100vh" 
-    display="flex"
-    // need to set background
-    sx={{
-      // backgroundImage: "url('https://lh3.googleusercontent.com/MOf9Kxxkj7GvyZlTZOnUzuYv0JAweEhlxJX6gslQvbvlhLK5_bSTK6duxY2xfbBsj43H=w300')"
-      // backgroundImage: "../../public/images/gradient-connection-background.jpg"
-    }}
-    >
-
+    <div className='login'>
 <Box
       width="250px" 
       // height="100vh" 
@@ -158,7 +148,7 @@ export default function Login() {
         </Button>
       </Box>
     </Box>
-    </Box>
+    </div>
   );
 }
 

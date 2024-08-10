@@ -1,7 +1,7 @@
 .chat-container {
+  background-image: url('../public/images/home.jpeg');
   margin: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

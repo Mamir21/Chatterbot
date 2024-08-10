@@ -15,3 +15,7 @@
   border-top-right-radius: 0;
   transition: 0.7s;
 }
+
+.login {
+  background-image: url('../public/images/home.jpeg');
+}

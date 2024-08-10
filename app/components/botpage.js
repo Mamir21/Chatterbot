@@ -70,6 +70,7 @@ export default function ChatBot() {
   }
 
   return (
+    <div className='bg'>
     <div className="chat-container">
       <div className="chat">
         <div className="response chat-history">
@@ -80,9 +81,9 @@ export default function ChatBot() {
             >
               <div className={`message-sender avatar ${message.role}`}>
               {message.role === 'user' ? (
-                  <img alt="avatar" width={40} height={40} src="../images/user1.jpg" />
+                  <img alt="avatar" width={40} height={40} src="../images/gojo1.gif" />
                 ) : (
-                  <img alt="avatar" width={40} height={40} src="../images/ai.png" />
+                  <img alt="avatar" width={40} height={40} src="../images/gojo1.gif" />
                 )}
               </div>
               <div className={`message-content ${message.role}`} style={{ width: '100%', marginLeft: '16px' }}>
@@ -111,6 +112,7 @@ export default function ChatBot() {
           )}
         </div>
       </div>
+    </div>
     </div>
   )
 }

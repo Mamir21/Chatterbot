@@ -7,7 +7,7 @@ export const queryLLaMA = async (messages) => {
       {
         model: 'llama3-8b-8192',
         messages,  
-        temperature: 1,
+        temperature: 1.5,
         max_tokens: 1024,
         top_p: 1,
         stream: false,
