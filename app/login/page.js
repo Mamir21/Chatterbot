@@ -38,9 +38,11 @@ export default function Login() {
 
   return (
     <div className='login'>
+      <nav>
+      <img src='/images/logo.png' className="logo" />
       <Box
         position="absolute"
-        top="20px"
+        top="35px"
         right="20px"
         borderRadius="50%"
         sx={{
@@ -59,7 +61,7 @@ export default function Login() {
       >
         <a className="btn" onClick={handleGoogleSignIn}>Login</a>
       </Box>
-
+      </nav>
       <Box
         width="100vw" 
         height="100vh" 
