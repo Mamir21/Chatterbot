@@ -1,8 +1,7 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { signInWithGoogle } from '../services/auth';
-import { Button, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { auth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
@@ -35,120 +34,76 @@ export default function Login() {
     } catch (error) {
       alert('Error signing in with Google: ' + error.message);
     }
-  }
+  };
 
   return (
     <div className='login'>
-<Box
-      width="250px" 
-      // height="100vh" 
-      border="1px solid #333"
-      borderRadius="8px"
-      bgcolor={'lightblue'}
-      position="absolute"
-      // justifyContent="center"
-      // alignItems="center"
-      left="300px"
-      top="500px"
-      p={1}
-
+      <Box
+        position="absolute"
+        top="20px"
+        right="20px"
+        borderRadius="50%"
+        sx={{
+          '@keyframes buttonGlow': {
+            '0%': { boxShadow: '0 0 5px #4b5cf3' },
+            '50%': { boxShadow: '0 0 20px #4b5cf3' },
+            '100%': { boxShadow: '0 0 5px #4b5cf3' },
+          },
+          animation: 'buttonGlow 2s infinite',
+          cursor: 'pointer', 
+          '&:hover': {
+            backgroundColor: '#3a4ecf', 
+            transition: 'background-color 0.3s',
+          },
+        }}
       >
-        <h1>Bot:</h1>
-        <Typography>-------------------------------------</Typography>
-        <Typography fontSize="30px" position="relative" alignContent="center"
-        alignItems="center"
-        justifyContent="center"
-        justifyItems="center"
-        >
-          Based on the Llama model, we out here with the Chatterbot
-          </Typography>
+        <a className="btn" onClick={handleGoogleSignIn}>Login</a>
       </Box>
 
       <Box
-      width="250px" 
-      // height="100vh" 
-      border="1px solid #333"
-      borderRadius="8px"
-      bgcolor={'lightblue'}
-      position="absolute"
-      // justifyContent="center"
-      // alignItems="center"
-      left="975px"
-      top="100px"
-      p={1}
-
+        width="100vw" 
+        height="100vh" 
+        display="flex" 
+        flexDirection="column"
+        justifyContent="center" 
+        alignItems="center" 
+        gap={2}
       >
-        <h1>Bot2:</h1>
-        <Typography>-------------------------------------</Typography>
-        <Typography fontSize="30px" position="relative" alignContent="center"
-        alignItems="center"
-        justifyContent="center"
-        justifyItems="center"
+        <Typography
+          fontSize="40px"
+          color="lightblue"
+          position="relative"
+          sx={{
+            '@keyframes fadeInUp': {
+              '0%': { opacity: 0, transform: 'translateY(20px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            '@keyframes textGlow': {
+              '0%': { textShadow: '0 0 5px lightblue' },
+              '50%': { textShadow: '0 0 20px lightblue' },
+              '100%': { textShadow: '0 0 5px lightblue' },
+            },
+            animation: 'fadeInUp 2s ease-out, textGlow 2s infinite', 
+          }}
         >
-          Based on the Llama model, we out here with the Chatterbot
-          </Typography>
-      </Box>
-
-      <Box
-      width="250px" 
-      // height="100vh" 
-      border="1px solid #333"
-      borderRadius="8px"
-      bgcolor={'lightblue'}
-      position="absolute"
-      // justifyContent="center"
-      // alignItems="center"
-      right="300px"
-      top="500px"
-      p={1}
-
-      >
-        <h1>Bot3:</h1>
-        <Typography>-------------------------------------</Typography>
-        <Typography fontSize="30px" position="relative" alignContent="center"
-        alignItems="center"
-        justifyContent="center"
-        justifyItems="center"
+          Welcome To
+        </Typography>
+        <Typography 
+          position="relative" 
+          fontSize="75px" 
+          color="lightblue"
+          sx={{
+            '@keyframes textGlow': {
+              '0%': { textShadow: '0 0 5px lightblue' },
+              '50%': { textShadow: '0 0 20px lightblue' },
+              '100%': { textShadow: '0 0 5px lightblue' },
+            },
+            animation: 'textGlow 2s infinite',
+          }}
         >
-          Based on the Llama model, we out here with the Chatterbot
-          </Typography>
+          Chatterbot
+        </Typography>
       </Box>
-
-    <Box 
-      width="100vw" 
-      height="100vh" 
-      display="flex" 
-      flexDirection="column"
-      justifyContent="center" 
-      alignItems="center" 
-      gap={2}
-    >
-     <Typography position="relative" fontSize="75px" color="lightblue">Chatterbot</Typography> 
-      <Box
-      // width="100vw" 
-      // height="100vh" 
-      display={'flex'}
-      flexDirection="column"
-      justifyContent={'center'}
-      alignItems={'center'}
-      border="1px solid #333"
-      borderRadius="8px"
-      p={3}
-      bgcolor={'lightblue'}
-      >
-        <h1>Sign Up / Log In</h1>
-        <Typography>---------------------------------------------------------</Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleGoogleSignIn}
-          style={{ backgroundColor: '#33292900', color: '#674B4B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <img src="/images/google-logo.png" alt="Google Logo" style={{ width: '20px', marginRight: '8px', borderRadius: '35%' }} />
-          Sign In with Google
-        </Button>
-      </Box>
-    </Box>
     </div>
-  )
+  );
 }
