@@ -8,6 +8,7 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition: background-color 0.3s ease;
 }
 
 .logo {
@@ -40,4 +41,8 @@ nav ul li {
 
 .btn:hover {
   border-top-right-radius: 30px;
+}
+
+nav.scrolled {
+  background-color: #0b243d; 
 }

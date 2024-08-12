@@ -14,7 +14,27 @@
   border-radius: 30px;
   border-top-right-radius: 0;
   transition: 0.7s;
+  cursor: pointer;
+  animation: buttonGlow 2s infinite;
 }
+
+.btn:hover {
+  background-color: #3a4ecf;
+  transition: background-color 0.3s;
+}
+
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 0 5px #4b5cf3;
+  }
+  50% {
+    box-shadow: 0 0 20px #4b5cf3;
+  }
+  100% {
+    box-shadow: 0 0 5px #4b5cf3;
+  }
+}
+
 
 .login {
   background-image: url('../public/images/home.jpeg');
