@@ -39,7 +39,7 @@ export default function Login() {
   return (
     <div className='login'>
       <nav>
-      <img src='/images/logo.png' className="logo" />
+      {/* <img src='/images/logo.png' className="logo-login" /> */}
       <Box
         position="absolute"
         top="35px"

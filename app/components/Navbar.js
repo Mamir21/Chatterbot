@@ -26,7 +26,7 @@ export default function Navbar() {
         <li><NavLink href="/bot" title="Chatterbot" /></li>
       </ul>
       <div>
-        <button className='btn' onClick={handleLogout}>Log out</button>
+        <a className='btn' onClick={handleLogout}>Log out</a>
       </div>
     </nav>
   )
