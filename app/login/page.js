@@ -4,6 +4,7 @@ import { signInWithGoogle } from '../services/auth';
 import { Box, Typography } from '@mui/material';
 import { auth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import '../navbar.css';
 import { useEffect } from 'react';
 
 export default function Login() {
@@ -39,10 +40,10 @@ export default function Login() {
   return (
     <div className='login'>
       <nav>
-      {/* <img src='/images/logo.png' className="logo-login" /> */}
+      <img src='/images/logo.png' className="logo" /> 
       <Box
         position="absolute"
-        top="35px"
+        top="30px"
         right="20px"
         borderRadius="50%"
         sx={{
