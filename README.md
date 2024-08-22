@@ -1,6 +1,6 @@
 # ChatterBot
 
-ChatterBot is an AI-driven chatbot application that allows users to ask questions and receive answers in real time. The application features a secure login system using Google Firebase and is built on a modern tech stack with Next.js for the frontend and regular CSS for styling.
+ChatterBot is an AI-driven chatbot application designed to provide real-time answers to any questions users may have. The application features seamless integration for a wide range of inquiries, backed by a secure login system using Google Firebase. Built on a modern tech stack, it utilizes Next.js for a fast and responsive frontend, with both regular CSS and Material-UI (MUI) ensuring a clean, user-friendly interface.
 
 ## Demo
 
